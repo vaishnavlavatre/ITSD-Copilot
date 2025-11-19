@@ -1,0 +1,52 @@
+itsd-admin-copilot/
+├── backend/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── models/
+│   │   │   ├── __init__.py
+│   │   │   ├── user.py
+│   │   │   ├── knowledge_base.py
+│   │   │   └── conversation.py
+│   │   ├── routes/
+│   │   │   ├── __init__.py
+│   │   │   ├── auth.py
+│   │   │   ├── chat.py
+│   │   │   ├── feedback.py
+│   │   │   └── kb_admin.py
+│   │   ├── services/
+│   │   │   ├── __init__.py
+│   │   │   ├── nlp_engine.py
+│   │   │   ├── knowledge_service.py
+│   │   │   ├── auth_service.py
+│   │   │   └── automation_service.py
+│   │   ├── utils/
+│   │   │   ├── __init__.py
+│   │   │   └── security.py
+│   │   └── config.py
+│   ├── tests/
+│   ├── requirements.txt
+│   ├── Dockerfile
+│   └── run.py
+├── frontend/
+│   ├── static/
+│   │   ├── css/
+│   │   ├── js/
+│   │   └── images/
+│   ├── templates/
+│   │   └── index.html
+│   └── Dockerfile
+├── cli/
+│   ├── __init__.py
+│   ├── cli.py
+│   └── requirements.txt
+├── knowledge_base/
+│   ├── unix_kb.json
+│   └── feedback_log.json
+├── docker-compose.yml
+├── deployment/
+│   ├── aws/
+│   └── scripts/
+├── docs/
+│   ├── architecture.md
+│   └── setup.md
+└── README.md

@@ -1,0 +1,132 @@
+{
+  "intents": {
+    "command_syntax": "Provides Unix/Linux command syntax and usage",
+    "troubleshooting": "Helps troubleshoot Unix system issues and errors",
+    "status_check": "Provides system status and monitoring commands",
+    "user_management": "Assists with user account management",
+    "process_management": "Helps with process monitoring and management",
+    "file_management": "Assists with file system operations",
+    "backup_management": "Handles backup-related issues and procedures",
+    "network_management": "Manages network-related alerts and issues",
+    "ssl_management": "Handles SSL certificate renewals and procedures",
+    "ticket_management": "Helps with ticket creation and management processes"
+  },
+  "commands": {
+    "df": "df -h - Display disk space usage in human-readable format",
+    "free": "free -m - Display memory usage in megabytes",
+    "ps": "ps aux - Display all running processes",
+    "find": "find / -type f -size +100M - Find files larger than 100MB",
+    "uptime": "uptime - Display system uptime and load average"
+  },
+  "troubleshooting": {
+    "Permission denied": "Check file permissions with 'ls -l' and use 'chmod' or 'chown' to fix",
+    "Command not found": "The command may not be installed or not in PATH",
+    "Disk full": "Use 'df -h' to check disk usage, clean up log files or temporary files",
+    "Low disk": "Check disk space and send email to server owners if space occupied is above 90%",
+    "Slow disk": "Refer to KB0012680 for volume problem resolution"
+  },
+  "articles": {
+    "KB001": {
+      "title": "Unix KBA Index",
+      "content": "ITSD - Unix Specialist Documents - Index: KB0010493\nhttps://www.techatford.com/now/sow/kb_view/kb_knowledge/33e3ffa99f702a54611ed07e1124ab51",
+      "tags": ["unix", "kba", "index", "main"]
+    },
+    "KB002": {
+      "title": "SSL Certificate Renewal",
+      "content": "SSL certificate renewal Procedure for IHS Webservers - ITSDUnix: KB0011230\nhttps://www.techatford.com/kb_view.do?sysparm_article=KB0011230\n\nSteps: Go to SSL certificate renewal procedure for Certs hosted on IHS Webservers through Jenkins Job: https://linux-gsd.ford.com/job/IHS-SSL_Certs_jobs/",
+      "tags": ["ssl", "certificate", "renewal", "ihs", "webserver"]
+    },
+    "KB003": {
+      "title": "NAS Filesystem Alerts",
+      "content": "NAS Filesystem Alerts in ITO/PHY servers - ITSDUnix: KB0010484\nhttps://www.techatford.com/kb_view.do?sysparm_article=KB0010484\n\nProcedure:\n1. Go to https://linux-gsd.ford.com/job/Read_Only_Operations/job/df/\n2. Check if the Filesystem usage status is above threshold (> 90%)\n3. Send an Email to server owner\n4. Hold the ticket as per priority mention below for Application Team / Server owner response.",
+      "tags": ["nas", "filesystem", "alerts", "storage"]
+    },
+    "KB004": {
+      "title": "Unix Ticket Creation",
+      "content": "How to create unix related tickets:\n\n1) For requests to make changes on the server such as installing/uninstalling software, moving or deleting files, cert renewals and any other items:\nhttps://www.techatford.com/now/sow/record/sc_cat_item/a3755f663d3492107b2c3d0acda0b300\n\n2) To submit request to add, update or remove access for a given user, group, ftp/generic/proxy account, or sudo access to a server:\nhttps://www.techatford.com/now/sow/record/sc_cat_item/a3ba18e34cfe0a90f832dca2f914969e",
+      "tags": ["tickets", "creation", "access", "changes"]
+    },
+    "KB005": {
+      "title": "Filesystem Disk Usage Check",
+      "content": "ITSD - Filesystem (Disk) usage status on ITO / PHY servers using Jenkins Job - ITSDUnix: KB0010319\nhttps://www.techatford.com/kb_view.do?sysparm_article=KB0010319",
+      "tags": ["disk", "storage", "filesystem", "monitoring"]
+    },
+    "KB006": {
+      "title": "Unix User ID Deletion",
+      "content": "ITSD - Unix user ID deletion in Jenkins Job - ITSDUnix: KB0011235\nhttps://www.techatford.com/kb_view.do?sys_kb_id=45670f235955921038328b14ee7de4ee\n\nProcedure:\n1) Check the server info\n2) Verify if there is approval\n3) Ask user for approval from IT pri/secondary delegate\n4) Once received the approval, go to Jenkins and run the job Delete_User_Account",
+      "tags": ["user", "deletion", "id", "account"]
+    },
+    "KB007": {
+      "title": "Host or Monitoring Unavailable",
+      "content": "ITSD - Host or monitoring unavailable - ITSDUnix: KB0010472\nhttps://www.techatford.com/kb_view.do?sysparm_article=KB0010472\n\nEscalation Procedure:\n- Unix Server: Forward the ticket to SNO-Global-Unix-Server-Ops\n- WAS Servers: Forward the ticket to SNO-Global-WebSphere-Linux-Server-Ops",
+      "tags": ["host", "monitoring", "unavailable", "escalation"]
+    },
+    "KB008": {
+      "title": "High Network Utilization",
+      "content": "ITSD - High Network Utilization On Host - ITSDUnix: KB0010475\nhttps://www.techatford.com/kb_view.do?sysparm_article=KB0010475\n\nProcedure:\n1) Get the Server name from the ticket\n2) Ensure if the alert is from specific servers (ltp03999, lep03994, etc.)\n3) If not, forward to SNO-Global-Unix-Server-Ops\n4) Go to Dynatrace: https://www.dynatrace.ford.com/\n5) Check if process running are dsmserv or Veeam agent\n6) If yes, email dprotect@ford.com\n7) If other processes, route to Unix L2",
+      "tags": ["network", "utilization", "high", "performance"]
+    },
+    "KB009": {
+      "title": "Backup Failure Resolution",
+      "content": "ITSD - Incremental backup failed/missed tickets from ITO/PHY servers - ITSDUnix: KB0010479\nhttps://www.techatford.com/kb_view.do?sysparm_article=KB0010479\n\nProcedure:\n1) Check server info\n2) Verify server status and if it's a plant server\n3) Go to Jenkins, Run the job restart TSM client\n4) Check Output, if tsm restart fails, route to L2\n5) For TSM restart success: Go to https://www.dcbackups.ford.com/\n6) Initiate one time backup\n7) Wait for backup to complete\n8) Check /site/backup/logs/dsmsched.log or dc backup website",
+      "tags": ["backup", "failure", "tsm", "incremental"]
+    },
+    "KB010": {
+      "title": "Weekend CR Server Verification",
+      "content": "ITSD - ITSD - Weekend CR Server Verification Process - ITSDUnix: KB0011237\nhttps://www.techatford.com/kb_view.do?sysparm_article=KB0011237",
+      "tags": ["weekend", "verification", "maintenance", "cr"]
+    },
+    "KB011": {
+      "title": "Process Utilization Alerts",
+      "content": "ITSD - Handling Process Utilization Alerts for DB Server / Oracle Database - ITSDUnix: KB0010322\nhttps://www.techatford.com/kb_view.do?sysparm_article=KB0010322",
+      "tags": ["process", "utilization", "alerts", "database"]
+    },
+    "KB012": {
+      "title": "Undocumented Process",
+      "content": "ITSD - Infra Undocumented Process - ITSDProcedure: KB0010405\nhttps://www.techatford.com/kb_view.do?sysparm_article=KB0010405",
+      "tags": ["undocumented", "process", "infrastructure"]
+    },
+    "KB013": {
+      "title": "Unix User ID Creation",
+      "content": "ITSD - Unix user ID creation in Jenkins Job - ITSDUnix: KB0011233\nhttps://www.techatford.com/kb_view.do?sysparm_article=KB0011233",
+      "tags": ["user", "creation", "id", "account"]
+    },
+    "KB014": {
+      "title": "Slow Disk Resolution",
+      "content": "ITSD - Processing ito 130614 FCO Volume Problem - ITSDUnix: KB0012680\nhttps://www.techatford.com/now/nav/ui/classic/params/target/kb_view.do%3Fsysparm_article%3DKB0012680",
+      "tags": ["slow", "disk", "volume", "performance"]
+    }
+  },
+  "faq": {
+    "hi": {
+      "question": "Greeting",
+      "answer": "How can I help you?",
+      "variations": ["hi", "hello", "hey"]
+    },
+    "disk_space": {
+      "question": "How to check disk space",
+      "answer": "Use command: df -h",
+      "variations": ["how much space is available", "check disk usage", "show storage capacity", "disk"]
+    },
+    "memory_usage": {
+      "question": "How to check memory usage", 
+      "answer": "Use command: free -m",
+      "variations": ["memory usage", "free", "memory", "ram"]
+    },
+    "running_processes": {
+      "question": "How to list running processes",
+      "answer": "Use command: ps aux",
+      "variations": ["process", "processes", "monitoring", "running processes"]
+    },
+    "large_files": {
+      "question": "How to find large files",
+      "answer": "Use command: find / -type f -size +100M",
+      "variations": ["large files", "find file", "find large files"]
+    },
+    "system_uptime": {
+      "question": "How to check system uptime", 
+      "answer": "Use command: uptime",
+      "variations": ["uptime", "check system uptime"]
+    }
+  }
+}

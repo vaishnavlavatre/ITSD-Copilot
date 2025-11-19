@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - SECRET_KEY=your-production-secret-key
+      - JWT_SECRET_KEY=your-jwt-secret-key
+      - MONGODB_URI=mongodb://mongodb:27017/itsd_copilot
+    volumes:
+      - ./knowledge_base:/app/knowledge_base
+    depends_on:
+      - mongodb
+    networks:
+      - itsd-network
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - itsd-network
+
+  mongodb:
+    image: mongo:5.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - itsd-network
+
+  cli:
+    build: ./cli
+    volumes:
+      - ./cli:/app
+    working_dir: /app
+    networks:
+      - itsd-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  itsd-network:
+    driver: bridge

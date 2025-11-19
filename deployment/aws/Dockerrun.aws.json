@@ -1,0 +1,18 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "your-ecr-repo/itsd-copilot:latest",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "5000"
+    }
+  ],
+  "Volumes": [
+    {
+      "HostDirectory": "/app/knowledge_base",
+      "ContainerDirectory": "/app/knowledge_base"
+    }
+  ]
+}

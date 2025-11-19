@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITSD Admin Copilot</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Screen -->
+        <div id="loginScreen" class="login-screen">
+            <div class="login-container">
+                <div class="company-branding">
+                    <div class="brand-logos">
+                        <div class="brand-logo ford-logo">
+                            <i class="fas fa-industry"></i>
+                            <span>Ford</span>
+                        </div>
+                        <div class="separator">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="brand-logo hcl-logo">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>HCLTech</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="login-header">
+                    <div class="logo">
+                        <i class="fas fa-robot logo-icon"></i>
+                        <h1>ITSD Admin Copilot</h1>
+                    </div>
+                    <p class="tagline">AI-Powered Unix Administration Assistant</p>
+                </div>
+                
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="username">
+                            <i class="fas fa-user"></i>
+                            Username:
+                        </label>
+                        <input type="text" id="username" name="username" required placeholder="Enter your username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i>
+                            Password:
+                        </label>
+                        <input type="password" id="password" name="password" required placeholder="Enter your password">
+                    </div>
+                    <button type="submit" class="login-btn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Sign In to Copilot
+                    </button>
+                </form>
+                
+                <div id="loginError" class="error-message"></div>
+                
+                <div class="test-accounts">
+                    <h3><i class="fas fa-users"></i> Test Accounts</h3>
+                    <div class="account-list">
+                        <div class="account-item">
+                            <strong>Admin:</strong> admin / admin123
+                        </div>
+                        <div class="account-item">
+                            <strong>Agent:</strong> agent1 / agent123
+                        </div>
+                        <div class="account-item">
+                            <strong>Agent:</strong> agent2 / agent123
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="login-footer">
+                <p>ITSD Admin Copilot &copy; 2024 - Powered by Ford & HCLTech</p>
+            </div>
+        </div>
+
+        <!-- Main Chat Interface (hidden initially) -->
+        <div id="chatInterface" class="chat-interface" style="display: none;">
+            <div class="app-header">
+                <div class="header-left">
+                    <div class="app-logo">
+                        <i class="fas fa-robot"></i>
+                        <span>ITSD Copilot</span>
+                    </div>
+                </div>
+                <div class="header-center">
+                    <h1>Admin Assistant 🤖</h1>
+                </div>
+                <div class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="userDisplayName">Guest</span>
+                    <span id="userRole" class="role-badge">user</span>
+                    <button id="logoutBtn" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </button>
+                </div>
+            </div>
+
+            <div class="main-container">
+                <div class="sidebar">
+                    <div class="sidebar-section">
+                        <h3>
+                            <i class="fas fa-bolt"></i>
+                            Quick Actions
+                        </h3>
+                        <div class="quick-actions">
+                            <button class="quick-action" data-query="How to check disk space?">
+                                <i class="fas fa-hdd"></i>
+                                Check Disk Space
+                            </button>
+                            <button class="quick-action" data-query="How to restart Apache?">
+                                <i class="fas fa-redo"></i>
+                                Restart Apache
+                            </button>
+                            <button class="quick-action" data-query="Check system status">
+                                <i class="fas fa-heartbeat"></i>
+                                System Status
+                            </button>
+                            <button class="quick-action" data-query="How to check running processes?">
+                                <i class="fas fa-tasks"></i>
+                                Running Processes
+                            </button>
+                            <button class="quick-action" data-query="Permission denied error">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                Permission Error
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3>
+                            <i class="fas fa-history"></i>
+                            Conversation History
+                        </h3>
+                        <div id="conversationHistory" class="conversation-history">
+                            <div class="no-history">No conversations yet</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-area">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot-message welcome-message">
+                            <div class="message-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <strong>ITSD Copilot</strong>
+                                    <span class="message-time" id="currentTime"></span>
+                                </div>
+                                <div class="message-text">
+                                    <p>Hello! I'm your AI-powered IT Service Desk Assistant. I can help you with:</p>
+                                    <ul>
+                                        <li>Unix command syntax and troubleshooting</li>
+                                        <li>System monitoring and status checks</li>
+                                        <li>Ford-specific procedures and KB articles</li>
+                                        <li>Automated task guidance</li>
+                                    </ul>
+                                    <p>How can I assist you today?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-container">
+                        <div class="chat-input">
+                            <input type="text" id="userInput" placeholder="Ask about Unix commands, troubleshooting, or system status...">
+                            <button id="sendBtn" class="send-btn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <div class="input-hints">
+                            Press Enter to send • Try "How to check disk space?" or "Permission denied error"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/js/chat.js"></script>
+</body>
+</html>

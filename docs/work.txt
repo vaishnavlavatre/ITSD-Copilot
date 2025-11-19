@@ -1,0 +1,28 @@
+    Clone the repository and navigate to the project directory.
+
+    Set up Python virtual environment for the backend and CLI.
+
+    Install dependencies for the backend and CLI.
+
+    Run the backend using python run.py or using Docker.
+
+    Access the web UI at http://localhost:5000.
+
+    Use the CLI by running python cli.py ask --query "your query".
+
+>cd cli
+>python cli.py login
+# Username: admin
+# Password: admin123
+>python cli.py ask "How to check disk space?"
+python cli.py ask "SSL certificate renewal"
+python cli.py ask "NAS filesystem alerts"
+python cli.py status
+python cli.py disk
+
+or
+cd backend && python run.py
+
+
+or
+click on start_project.bat

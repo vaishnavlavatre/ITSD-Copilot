@@ -1,0 +1,13 @@
+cd C:\Users\vaish\OneDrive\Desktop\itsdadmincopilot\backend
+python run.py
+
+cd C:\Users\vaish\OneDrive\Desktop\itsdadmincopilot\frontend
+python -m http.server 8000
+
+http://localhost:8000
+
+
+Role	Username	Password	Access Level
+Administrator	admin	admin123	Full system access
+ITSD Agent	agent1	agent123	Standard user access
+ITSD Agent	agent2	agent123	Standard user access

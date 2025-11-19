@@ -1,0 +1,37 @@
+{
+  "intents": {
+    "command_syntax": "Provides syntax and examples for Unix commands",
+    "troubleshooting": "Helps diagnose and fix common Unix issues",
+    "status_check": "Provides commands to check system status",
+    "user_management": "Helps with user account management",
+    "process_management": "Assists with process monitoring and management"
+  },
+  "commands": {
+    "df": "df -h - Display disk space usage in human-readable format",
+    "du": "du -sh <directory> - Check directory size",
+    "grep": "grep <pattern> <file> - Search for patterns in files",
+    "find": "find <path> -name <pattern> - Find files by name",
+    "chmod": "chmod <permissions> <file> - Change file permissions",
+    "chown": "chown <user>:<group> <file> - Change file ownership",
+    "ps": "ps aux - Display all running processes",
+    "kill": "kill <pid> - Terminate process by PID",
+    "systemctl": "systemctl <start|stop|restart|status> <service> - Manage services"
+  },
+  "troubleshooting": {
+    "Permission denied": "Check file permissions with 'ls -l' and use 'chmod' or 'chown' to fix",
+    "No such file or directory": "Verify the file path exists and check for typos",
+    "Command not found": "The command may not be installed or not in PATH. Check with 'which <command>'"
+  },
+  "articles": {
+    "KB001": {
+      "title": "How to check system resource usage",
+      "content": "Use 'top' for real-time monitoring, 'htop' for enhanced view, 'free -h' for memory, 'df -h' for disk space",
+      "tags": ["monitoring", "resources", "performance"]
+    },
+    "KB002": {
+      "title": "User account management basics",
+      "content": "Create user: 'useradd -m username', Set password: 'passwd username', Delete user: 'userdel -r username'",
+      "tags": ["users", "accounts", "management"]
+    }
+  }
+}
