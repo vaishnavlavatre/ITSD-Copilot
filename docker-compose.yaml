@@ -6,15 +6,16 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - SECRET_KEY=your-production-secret-key
-      - JWT_SECRET_KEY=your-jwt-secret-key
-      - MONGODB_URI=mongodb://mongodb:27017/itsd_copilot
+      - SECRET_KEY=${SECRET_KEY}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - MONGODB_URI=${MONGODB_URI}
     volumes:
       - ./knowledge_base:/app/knowledge_base
     depends_on:
       - mongodb
     networks:
       - itsd-network
+    restart: always
 
   frontend:
     build:
@@ -26,7 +27,13 @@ services:
       - backend
     networks:
       - itsd-network
-
+    restart: always
+    command: >
+      sh -c "
+      chown -R nginx:nginx /usr/share/nginx/html &&
+      chmod -R 755 /usr/share/nginx/html &&
+      nginx -g 'daemon off;'
+      "
   mongodb:
     image: mongo:5.0
     ports:
@@ -35,6 +42,7 @@ services:
       - mongodb_data:/data/db
     networks:
       - itsd-network
+    restart: always
 
 volumes:
   mongodb_data:

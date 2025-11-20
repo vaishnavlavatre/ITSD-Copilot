@@ -1,0 +1,1 @@
+ssh -i itsdcopilot.pem ec2-user@13.126.145.0
